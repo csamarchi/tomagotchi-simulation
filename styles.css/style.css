@@ -1,76 +1,10 @@
-/* html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
-} */
-/*
-html {
-  line-height: 1;
+body {
+  background-color: #a5dff5;
 }
-
-ol, ul {
-  list-style: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-caption, th, td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
-q, blockquote {
-  quotes: none;
-}
-
-q:before, q:after, blockquote:before, blockquote:after {
-  content: "";
-  content: none;
-}
-
-a img {
-  border: none;
-}
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
-  display: block;
-} */
 
 #container {
   width: 600px;
-  margin: 0px auto;
-}
-
-body {
-  /* position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 960px; */
-  /* min-width: auto;
-  min-height: 600px; */
-  background-color: #a5dff5;
-  /* z-index: -1; */
+  margin: 0px;
 }
 
 #name {
@@ -79,7 +13,6 @@ body {
   top: 20px;
   left: 10px;
 }
-
 
 .wrap {
   min-width: 800px;
@@ -106,7 +39,7 @@ body {
   left: 300px;
   top: 200px;
   margin-left: -35%;
-  margin-top: -15%;
+  margin-top: -10%;
   -webkit-box-shadow: inset 5px 5px 5px 0 #333333, inset -3px -3px 0 0 #999999;
   -moz-box-shadow: inset 5px 5px 5px 0 #333333, inset -3px -3px 0 0 #999999;
   box-shadow: inset 5px 5px 5px 0 #333333, inset -3px -3px 0 0 #999999;
@@ -134,17 +67,149 @@ body {
   box-shadow: inset -10px -10px 45px 0 #333333, inset 10px 10px 75px 0 #f5c6c6, 10px 10px 35px -10px black;
 }
 
-.configurations {
-  position: relative;
-  left: 0px;
-  top: 100px;
-  padding-bottom: 70px;
-  padding-top: 0;
+.pet {
+  width: 300px;
+  height: 250px;
+  position: absolute;
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  margin-left: -180px;
+  margin-top: -125px;
+  -webkit-transition: 3s;
+  -moz-transition: 3s;
+  -o-transition: 3s;
+  transition: 3s;
+}
+
+.pet .head {
+  width: 40%;
+  height: 30%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
+  background: #FCE835;
+  position: absolute;
+  left: 40%;
+  top: 50%;
+  margin-left: 0%;
+  margin-top: -25%;
+  border: 5px solid #0A1F47;
+  border-color: #0A1F47;
+  background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  z-index: 3;
+  -webkit-box-shadow: 1px 3px 10px -5px #333333;
+  -moz-box-shadow: 1px 3px 10px -5px #333333;
+  box-shadow: 1px 3px 10px -5px #333333;
+  -webkit-transition: 3s;
+  -moz-transition: 3s;
+  -o-transition: 3s;
+  transition: 3s;
+}
+
+.pet .left-ear {
+  width: 30%;
+  height: 70%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
+  background: #0A1F47;
+  position: absolute;
+  top: -40%;
+  left: 5%;
+  bottom: 10%;
+}
+
+.pet .right-ear {
+  width: 30%;
+  height: 70%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
+  background: #0A1F47;
+  position: absolute;
+  top: -40%;
+  left: 65%;
+  bottom: 10%;
+}
+
+.pet .body {
+  width: 25%;
+  height: 30%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
+  border: 5px solid #0A1F47;
+  background: #FCE835;
+  position: absolute;
+  left: 48%;
+  top: 76%;
+  margin-left: 0%;
+  margin-top: -25%;
+}
+
+.pet .eyes span {
+  width: 20%;
+  height: 20%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
+  background-color: black;
+  position: absolute;
+  font-size: 15px;
+  border: 1px solid #000;
+}
+
+.pet .left-eye {
+  left: 20%;
+  top: 30%;
+}
+
+.pet .right-eye {
+  right: 20%;
+  top: 30%;
+}
+
+.pet .mouth {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  font-weight: bold;
+  font-family: arial;
+  font-size: 27px;
+  position: absolute;
+  left: 55%;
+  top: 50%;
+  margin-left: -10px;
+  margin-top: 7px;
 }
 
 p, h1 {
   font-size: 2em;
   font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.greeting {
+  text-align: center;
+  font-style: italic;
+}
+
+.outside {
+  text-align: left;
 }
 
 .button {
@@ -157,5 +222,14 @@ p, h1 {
 .metrics {
   font-size: 10px;
   position: relative;
-  left: 600px;
+  left: 550px;
+  bottom: 300px;
+}
+
+.configurations {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  padding-bottom: 70px;
+  padding-top: 0;
 }

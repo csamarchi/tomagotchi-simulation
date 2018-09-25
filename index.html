@@ -1,56 +1,73 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="styles.css/style.css">
-  </head>
-  <body>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="styles.css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.ui.js"></script>
+
+</head>
+
+<body>
   <div id="container">
     <div class="wrap">
-    			<section class="intro">
-    				<h1 class="title">Hello!</h1>
-    			</section>
+      <section class="intro">
+        <h1 class="title">Hello Tamagotchi!</h1>
+      </section>
 
-          <div id="name">
-          <h3>Name your pet</h3>
-          <input type="text">
-          <button>Submit</button>
-        </div>
-
-    			<section class="home">
-    				<div class="cat child">
-    					<div class="head">
-    						<p class="ears"><span class="left-ear"></span><span class="right-ear"></span></p>
-    						<p class="eyes"><span class="left-eye"></span><span class="right-eye"></span></p>
-    						<p class="nose"></p>
-    					</div>
-    					<div class="body">
-    						<div class="left-arm"></div>
-    						<div class="right-arm"></div>
-    						<div class="left-leg"><span class="foot"></span></div>
-    						<div class="right-leg"><span class="foot"></span></div>
-    					</div>
-    				</div>
-    			</section>
-          <div class="metrics">
-          <p>Age</p>
-          <p>Hunger</p>
-          <p>Sleepiness</p>
-          <p>Boredom</p>
-          </div>
-
-    			<section class="configurations">
-    				<p>Play Here:</p>
-    				<button class="button" id="play">Play with your pet</button>
-    				<button class="button" id="feed">Feed your pet</button>
-    				<button class="button" id="doctor">Turn off the lights</button>
-    			</section>
-
-
-
-</div>
+      <div id="name">
+        <h3 class="outside">Name your pet</h3>
+        <input type="text">
+        <button id="nameButton">Submit</button>
       </div>
-    <script src="app.js"></script>
-  </body>
+
+      <section class="home">
+        <div class="pet">
+          <div class="head">
+            <p class="ears"><span class="left-ear"></span><span class="right-ear"></span></p>
+            <p class="eyes"><span class="left-eye"></span><span class="right-eye"></span></p>
+            <p class="blush"><span class="left-blush"></span><span class="right-blush"></span></p>
+            <p class="mouth"> ) </p>
+          </div>
+          <div class="body">
+            <div class="left-arm"></div>
+            <div class="right-arm"></div>
+            <div class="left-leg"><span class="foot"></span></div>
+            <div class="right-leg"><span class="foot"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="metrics">
+        <p class="input" id="Age" value="0">Age</p>
+        <progress id="age" value="0" max="10"></progress>
+
+        <p class="input" id="Hunger" value="10">Hunger</p>
+        <progress id="hunger" value="5" max="10"></progress>
+
+        <p class="input" id="Energy" value="10">Energy</p>
+        <progress id="sleep" value="10" min="0"></progress>
+
+        <p class="input" id="Mood" value="10">Mood</p>
+        <progress id="mood" value="5" max="10"></progress>
+
+      </div>
+
+      <section class="configurations">
+        <p>Play Here:</p>
+        <button class="button" id="play">Play with your pet</button>
+        <button class="button" id="feed">Feed your pet</button>
+        <button class="button" id="lights">Turn off the lights</button>
+      </section>
+
+
+
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+
 </html>
