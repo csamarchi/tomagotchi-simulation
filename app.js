@@ -1,3 +1,16 @@
+// Tamagotchi
+//
+// Created by Christine Samarchi
+//Global Variables
+
+
+var moodHealth = $('#mood').val()
+var ageHealth = $('#mood').val()
+var energyHealth = $('#mood').val()
+var hungerHealth = $('#mood').val()
+
+
+//Name Functions
 $('#nameButton').on('click', () => {
   const $name = $('input').val();
   console.log($name);
@@ -10,8 +23,12 @@ const giveName = (inputValue) => {
   $('.home').append($div);
 }
 
+
+//Button click event listeners
 $('#play').on('click', function() {
   console.log('play work');
+  moodHealth++
+  $('#mood').val(moodHealth)
 })
 
 $('#feed').on('click', function() {
@@ -20,8 +37,22 @@ $('#feed').on('click', function() {
 
 $('#lights').on('click', function() {
   console.log('lights work');
+  energyHealth++
+  $('#sleep').val(energyHealth)
 })
 
 
+//Animations
 $('.pet').velocity('transition.bounceDownIn');
 $('.pet').velocity('transition.bounceUpIn');
+
+
+
+
+
+
+var width = 10;
+
+function test() {
+
+}
