@@ -2,12 +2,13 @@
 //
 // Created by Christine Samarchi
 //Global Variables
-
-
 var moodHealth = $('#mood').val()
-var ageHealth = $('#mood').val()
-var energyHealth = $('#mood').val()
-var hungerHealth = $('#mood').val()
+var ageHealth = $('#age').val()
+var energyHealth = $('#sleep').val()
+var hungerHealth = $('#hunger').val()
+
+var healthBarsMin = 0
+var healthBarsMax = 10
 
 
 //Name Functions
@@ -29,16 +30,21 @@ $('#play').on('click', function() {
   console.log('play work');
   moodHealth++
   $('#mood').val(moodHealth)
+  checkMinAndMax($('#mood'))
 })
 
 $('#feed').on('click', function() {
   console.log('feed work');
+  hungerHealth--
+  $('#hunger').val(hungerHealth)
+  checkMinAndMax($('#hunger'))
 })
 
 $('#lights').on('click', function() {
   console.log('lights work');
   energyHealth++
   $('#sleep').val(energyHealth)
+  checkMinAndMax($('#sleep'))
 })
 
 
@@ -47,12 +53,12 @@ $('.pet').velocity('transition.bounceDownIn');
 $('.pet').velocity('transition.bounceUpIn');
 
 
-
-
-
-
-var width = 10;
-
-function test() {
-
+//Min & Max Function
+function checkMinAndMax(progress) {
+  console.log(progress.val());
+  if (progress.val() <= healthBarsMin) {
+    progress.val(healthBarsMin)
+  } if (progress.val() >= healthBarsMax) {
+    progress.val(healthBarsMax)
+  }
 }
