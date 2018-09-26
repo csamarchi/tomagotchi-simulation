@@ -9,37 +9,38 @@ let ageHealth = $('#age').val()
 let time = 0;
 let healthBarsMin = 0
 let healthBarsMax = 10
-let timerInterval = 1000
+let timerInterval = 2000
 
 
 //Min & Max Function
 function checkMinAndMax(healthBar) {
   if (healthBar.val() <= healthBarsMin) {
     healthBar.val(healthBarsMin)
-  } if (healthBar.val() >= healthBarsMax) {
+  }
+    if (healthBar.val() >= healthBarsMax) {
     healthBar.val(healthBarsMax)
   }
 }
 
 //Created Game Over Functions
 function checkHunger(healthBar) {
-  if ($('#hunger').val() === 10) {
+  if ($('#hunger').val() === 0) {
     console.log('hunger game over');
-    //alert('GAME OVER')
+    alert('GAME OVER')
   }
 }
 
 function checkEnergy(healthBar) {
   if ($('#sleep').val() === 0) {
     console.log('energy game over');
-    //alert('GAME OVER')
+    alert('GAME OVER')
   }
 }
 
 function checkMood(healthBar) {
   if ($('#mood').val() === 0) {
-    console.log('mood game over');
-    //alert('GAME OVER')
+    //console.log('your pet killed himself');
+    alert('GAME OVER')
   }
 }
 
@@ -66,7 +67,7 @@ $('#play').on('click', function() {
 })
 
 $('#feed').on('click', function() {
-  decrementHealthBar($('#hunger'))
+  incrementHealthBar($('#hunger'))
   checkMinAndMax($('#hunger'))
 })
 
@@ -101,31 +102,35 @@ function incrementAge() {
   let age = $('#age').val();
   age++;
   $('#age').val(age);
-  console.log(age);
 }
-
 
 //Timer
 const setTimer = (healthBar, increment) => {
-  timer = setInterval(() => {
+  const timer = setInterval(() => {
 
+
+    if ($('#hunger').val() === 0 || $('#mood').val() === 0 || $('#sleep').val() === 0) {
+      //console.log('game over');
+      alert('GAME OVER')
+      clearInterval(timer);
+    }
     if (increment) {
-      incrementHealthBar(healthBar)
-    } else {
       decrementHealthBar(healthBar)
     }
-    checkMinAndMax(healthBar);
-    checkHunger(healthBar);
-    checkEnergy(healthBar);
-    checkMood(healthBar)
+     checkMinAndMax(healthBar);
 
-    if ()
+    if (decrementHealthBar(healthBar) === 0) {
+       console.log('game over');
+       clearInterval(timer)
+    }
+
 }, timerInterval)
 }
 
 //Age Timer
 const ageTimer = (healthBar, increment) => {
   const timer = setInterval(() => {
+  adult()
   time++;
   // console.log(time);
   if (increment) {
@@ -136,14 +141,34 @@ const ageTimer = (healthBar, increment) => {
       alert('GAME OVER')
     }
   }, 1000)
+
 }
 
 
 function startTamagotchi() {
   setTimer($('#mood'), false);
   setTimer($('#sleep'), false);
-  setTimer($('#hunger'), true);
+  setTimer($('#hunger'), false);
   ageTimer($('#age'), true);
+}
+
+
+
+
+function checkGameOver() {
+  checkHunger();
+  checkMood();
+  checkEnergy();
+}
+
+
+function adult() {
+  if ($('#age').val() === 2) {
+    console.log('hello');
+    $('.head').css({'background': 'blue'});
+    $('.body').css({'background': 'blue'});
+    $('.body').append('</div>').addClass('left-arm');
+  }
 }
 
 
@@ -154,4 +179,4 @@ function startTamagotchi() {
 // ===================================
 
 
-//startTamagotchi()
+startTamagotchi()
