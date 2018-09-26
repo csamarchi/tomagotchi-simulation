@@ -21,6 +21,28 @@ function checkMinAndMax(healthBar) {
   }
 }
 
+//Created Game Over Functions
+function checkHunger(healthBar) {
+  if ($('#hunger').val() === 10) {
+    console.log('hunger game over');
+    //alert('GAME OVER')
+  }
+}
+
+function checkEnergy(healthBar) {
+  if ($('#sleep').val() === 0) {
+    console.log('energy game over');
+    //alert('GAME OVER')
+  }
+}
+
+function checkMood(healthBar) {
+  if ($('#mood').val() === 0) {
+    console.log('mood game over');
+    //alert('GAME OVER')
+  }
+}
+
 
 //Name Functions
 $('#nameButton').on('click', () => {
@@ -89,13 +111,15 @@ const setTimer = (healthBar, increment) => {
 
     if (increment) {
       incrementHealthBar(healthBar)
-      //incrementAge()
-
     } else {
       decrementHealthBar(healthBar)
     }
-
     checkMinAndMax(healthBar);
+    checkHunger(healthBar);
+    checkEnergy(healthBar);
+    checkMood(healthBar)
+
+    if ()
 }, timerInterval)
 }
 
@@ -111,7 +135,7 @@ const ageTimer = (healthBar, increment) => {
       console.log('game over');
       alert('GAME OVER')
     }
-  }, 3000)
+  }, 1000)
 }
 
 
@@ -121,7 +145,6 @@ function startTamagotchi() {
   setTimer($('#hunger'), true);
   ageTimer($('#age'), true);
 }
-
 
 
 
