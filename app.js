@@ -54,11 +54,32 @@ $('.pet').velocity('transition.bounceUpIn');
 
 
 //Min & Max Function
-function checkMinAndMax(progress) {
-  console.log(progress.val());
-  if (progress.val() <= healthBarsMin) {
-    progress.val(healthBarsMin)
-  } if (progress.val() >= healthBarsMax) {
-    progress.val(healthBarsMax)
+function checkMinAndMax(healthBar) {
+  if (healthBar.val() <= healthBarsMin) {
+    healthBar.val(healthBarsMin)
+  } if (healthBar.val() >= healthBarsMax) {
+    healthBar.val(healthBarsMax)
   }
 }
+
+
+//Timer
+const setTimer = (healthBar, increment) => {
+  const interval = setInterval(() => {
+    console.log(healthBar.val());
+
+    let x = healthBar.val();
+
+    if (increment) {
+      x++
+    } else {
+      x--
+    }
+
+    healthBar.val(x);
+    checkMinAndMax(healthBar);
+}, 1000)
+}
+// setTimer($('#mood'), false);
+// setTimer($('#sleep', false));
+// setTimer($('#hunger'), true);
