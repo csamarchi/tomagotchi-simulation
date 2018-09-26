@@ -9,7 +9,7 @@ let ageHealth = $('#age').val()
 let time = 0;
 let healthBarsMin = 0
 let healthBarsMax = 10
-let timerInterval = 2000
+let timerInterval = 5000
 
 
 //Min & Max Function
@@ -105,37 +105,30 @@ function incrementAge() {
 }
 
 //Timer
-const setTimer = (healthBar, increment) => {
+const setTimer = (healthBar) => {
   const timer = setInterval(() => {
 
-
     if ($('#hunger').val() === 0 || $('#mood').val() === 0 || $('#sleep').val() === 0) {
-      //console.log('game over');
       alert('GAME OVER')
       clearInterval(timer);
     }
-    if (increment) {
-      decrementHealthBar(healthBar)
-    }
-     checkMinAndMax(healthBar);
 
-    if (decrementHealthBar(healthBar) === 0) {
-       console.log('game over');
-       clearInterval(timer)
-    }
-
+    decrementHealthBar(healthBar)
+    checkMinAndMax(healthBar);
 }, timerInterval)
 }
 
 //Age Timer
-const ageTimer = (healthBar, increment) => {
+const ageTimer = (healthBar) => {
   const timer = setInterval(() => {
+  child()
   adult()
+  elder()
   time++;
-  // console.log(time);
-  if (increment) {
-    incrementAge(healthBar)
-  } if (time === 40) {
+
+  incrementAge(healthBar)
+
+  if (time === 40) {
       clearInterval(timer);
       console.log('game over');
       alert('GAME OVER')
@@ -146,10 +139,10 @@ const ageTimer = (healthBar, increment) => {
 
 
 function startTamagotchi() {
-  setTimer($('#mood'), false);
-  setTimer($('#sleep'), false);
-  setTimer($('#hunger'), false);
-  ageTimer($('#age'), true);
+  setTimer($('#mood'));
+  setTimer($('#sleep'));
+  setTimer($('#hunger'));
+  ageTimer($('#age'));
 }
 
 
@@ -161,18 +154,39 @@ function checkGameOver() {
   checkEnergy();
 }
 
-
-function adult() {
-  if ($('#age').val() === 2) {
+function child() {
+  if ($('#age').val() === 10) {
     console.log('hello');
-    $('.head').css({'background': 'blue'});
-    $('.body').css({'background': 'blue'});
-    $('.body').append('</div>').addClass('left-arm');
+    $('.pet').velocity('transition.bounceDownIn');
+    $('.pet').css({'width': '300px', 'height': '250px', 'left': '50%', 'top': '60%'})
   }
 }
 
+function adult() {
+  if ($('#age').val() === 20) {
+    console.log('hello');
+    $('.pet').velocity('transition.bounceDownIn');
+    $('.head').css({'background': 'blue'});
+    $('.body').css({'background': 'blue'});
+    $('.pet').css({'width': '350px', 'height': '300px', 'left': '40%', 'top': '45%'})
+  }
+}
 
+function elder() {
+  if ($('#age').val() === 30) {
+    console.log('hello');
+    $('.pet').velocity('transition.bounceDownIn');
+    $('.pet').css({'width': '280px', 'height': '240px', 'left': '50%', 'top': '60%'})
+    $('.head').css({'background': 'gray'});
+    $('.body').css({'background': 'gray'});
+    $('.eyes span').css({'width': '10%', 'height': '10%'});
+  }
+}
 
+/* width: 300px;
+height: 250px; */
+/* left: 50%;
+top: 60%; */
 
 // ===================================
 // Start Program
