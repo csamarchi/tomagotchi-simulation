@@ -1,14 +1,25 @@
 // Tamagotchi
 //
 // Created by Christine Samarchi
+
+
+
 //Global Variables
-var moodHealth = $('#mood').val()
 var ageHealth = $('#age').val()
-var energyHealth = $('#sleep').val()
-var hungerHealth = $('#hunger').val()
 
 var healthBarsMin = 0
 var healthBarsMax = 10
+var timerInterval = 3000
+
+var timer
+//Min & Max Function
+function checkMinAndMax(healthBar) {
+  if (healthBar.val() <= healthBarsMin) {
+    healthBar.val(healthBarsMin)
+  } if (healthBar.val() >= healthBarsMax) {
+    healthBar.val(healthBarsMax)
+  }
+}
 
 
 //Name Functions
@@ -24,26 +35,19 @@ const giveName = (inputValue) => {
   $('.home').append($div);
 }
 
-
 //Button click event listeners
 $('#play').on('click', function() {
-  console.log('play work');
-  moodHealth++
-  $('#mood').val(moodHealth)
+  incrementHealthBar($('#mood'))
   checkMinAndMax($('#mood'))
 })
 
 $('#feed').on('click', function() {
-  console.log('feed work');
-  hungerHealth--
-  $('#hunger').val(hungerHealth)
+  decrementHealthBar($('#hunger'))
   checkMinAndMax($('#hunger'))
 })
 
 $('#lights').on('click', function() {
-  console.log('lights work');
-  energyHealth++
-  $('#sleep').val(energyHealth)
+  incrementHealthBar($('#sleep'))
   checkMinAndMax($('#sleep'))
 })
 
@@ -53,33 +57,49 @@ $('.pet').velocity('transition.bounceDownIn');
 $('.pet').velocity('transition.bounceUpIn');
 
 
-//Min & Max Function
-function checkMinAndMax(healthBar) {
-  if (healthBar.val() <= healthBarsMin) {
-    healthBar.val(healthBarsMin)
-  } if (healthBar.val() >= healthBarsMax) {
-    healthBar.val(healthBarsMax)
-  }
+//Utility Functions
+function incrementHealthBar(healthBar) {
+  let health = healthBar.val()
+  health++
+  healthBar.val(health)
+}
+
+function decrementHealthBar(healthBar) {
+  let health = healthBar.val()
+  health--
+  healthBar.val(health)
 }
 
 
 //Timer
 const setTimer = (healthBar, increment) => {
-  const interval = setInterval(() => {
-    console.log(healthBar.val());
-
-    let x = healthBar.val();
+  timer = setInterval(() => {
 
     if (increment) {
-      x++
+      incrementHealthBar(healthBar)
     } else {
-      x--
+      decrementHealthBar(healthBar)
     }
 
-    healthBar.val(x);
     checkMinAndMax(healthBar);
-}, 1000)
+}, timerInterval)
 }
-// setTimer($('#mood'), false);
-// setTimer($('#sleep', false));
-// setTimer($('#hunger'), true);
+
+function startTamagotchi() {
+  setTimer($('#mood'), false);
+  setTimer($('#sleep'), false);
+  setTimer($('#hunger'), true);
+}
+
+
+
+
+
+
+
+// ===================================
+// Start Program
+// ===================================
+
+
+startTamagotchi()
