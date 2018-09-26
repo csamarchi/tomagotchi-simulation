@@ -5,13 +5,13 @@
 
 
 //Global Variables
-var ageHealth = $('#age').val()
+let ageHealth = $('#age').val()
+let time = 0;
+let healthBarsMin = 0
+let healthBarsMax = 10
+let timerInterval = 1000
 
-var healthBarsMin = 0
-var healthBarsMax = 10
-var timerInterval = 3000
 
-var timer
 //Min & Max Function
 function checkMinAndMax(healthBar) {
   if (healthBar.val() <= healthBarsMin) {
@@ -39,6 +39,8 @@ const giveName = (inputValue) => {
 $('#play').on('click', function() {
   incrementHealthBar($('#mood'))
   checkMinAndMax($('#mood'))
+  $('.pet').velocity('transition.bounceUpIn');
+  $('.pet').velocity('transition.bounceDownIn');
 })
 
 $('#feed').on('click', function() {
@@ -49,12 +51,15 @@ $('#feed').on('click', function() {
 $('#lights').on('click', function() {
   incrementHealthBar($('#sleep'))
   checkMinAndMax($('#sleep'))
+  $('.eyes').velocity('transition.shrinkOut');
+  $('.eyes').velocity('transition.shrinkIn');
 })
 
 
 //Animations
 $('.pet').velocity('transition.bounceDownIn');
 $('.pet').velocity('transition.bounceUpIn');
+//$('.eyes').velocity('transition.shrinkOut');
 
 
 //Utility Functions
@@ -70,6 +75,13 @@ function decrementHealthBar(healthBar) {
   healthBar.val(health)
 }
 
+function incrementAge() {
+  let age = $('#age').val();
+  age++;
+  $('#age').val(age);
+  console.log(age);
+}
+
 
 //Timer
 const setTimer = (healthBar, increment) => {
@@ -77,6 +89,8 @@ const setTimer = (healthBar, increment) => {
 
     if (increment) {
       incrementHealthBar(healthBar)
+      //incrementAge()
+
     } else {
       decrementHealthBar(healthBar)
     }
@@ -85,13 +99,28 @@ const setTimer = (healthBar, increment) => {
 }, timerInterval)
 }
 
+//Age Timer
+const ageTimer = (healthBar, increment) => {
+  const timer = setInterval(() => {
+  time++;
+  // console.log(time);
+  if (increment) {
+    incrementAge(healthBar)
+  } if (time === 40) {
+      clearInterval(timer);
+      console.log('game over');
+      alert('GAME OVER')
+    }
+  }, 3000)
+}
+
+
 function startTamagotchi() {
   setTimer($('#mood'), false);
   setTimer($('#sleep'), false);
   setTimer($('#hunger'), true);
+  ageTimer($('#age'), true);
 }
-
-
 
 
 
@@ -102,4 +131,4 @@ function startTamagotchi() {
 // ===================================
 
 
-startTamagotchi()
+//startTamagotchi()

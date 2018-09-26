@@ -233,3 +233,27 @@ p, h1 {
   padding-bottom: 70px;
   padding-top: 0;
 }
+
+
+/* //egg */
+.egg {
+  width: 25%;
+  height: 40%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
+  border: 5px solid #0A1F47;
+  position: absolute;
+  left: 35%;
+  top: 60%;
+  margin-left: 0%;
+  margin-top: -25%;
+  background: white;
+  background-image:
+  radial-gradient(salmon 20%, transparent 0),
+  radial-gradient(salmon 20%, transparent 0);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
