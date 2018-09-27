@@ -75,6 +75,7 @@ $('#play').on('click', function() {
 $('#feed').on('click', function() {
   incrementHealthBar($('#hunger'))
   checkMinAndMax($('#hunger'))
+  $('.pet').velocity('transition.bounceUpIn');
 })
 
 $('#lights').on('click', function() {
@@ -86,7 +87,7 @@ $('#lights').on('click', function() {
 
 
 //Animations
-$('.pet').velocity('transition.bounceDownIn');
+$('.pet').velocity('transition.bounce', 200);
 $('.pet').velocity('transition.bounceUpIn');
 //$('.eyes').velocity('transition.shrinkOut');
 
