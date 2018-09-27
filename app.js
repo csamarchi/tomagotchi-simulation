@@ -11,13 +11,32 @@ let healthBarsMin = 0
 let healthBarsMax = 10
 let timerInterval = 5000
 
+let timerArray = []
+
+
+
+//Name Functions
+$('#nameButton').on('click', () => {
+  const $name = $('input').val();
+  console.log($name);
+  giveName($name)
+  startTamagotchi()
+})
+
+const giveName = (inputValue) => {
+  const $div = $('<div/>').addClass('greeting');
+  $div.append('<h3>' + 'Hi ' + inputValue + ' !' + '</h3>');
+  $('.home').append($div);
+}
+
+
 
 //Min & Max Function
 function checkMinAndMax(healthBar) {
   if (healthBar.val() <= healthBarsMin) {
     healthBar.val(healthBarsMin)
   }
-    if (healthBar.val() >= healthBarsMax) {
+  if (healthBar.val() >= healthBarsMax) {
     healthBar.val(healthBarsMax)
   }
 }
@@ -44,19 +63,6 @@ function checkMood(healthBar) {
   }
 }
 
-
-//Name Functions
-$('#nameButton').on('click', () => {
-  const $name = $('input').val();
-  console.log($name);
-  giveName($name)
-})
-
-const giveName = (inputValue) => {
-  const $div = $('<div/>').addClass('greeting');
-  $div.append('<h3>' + 'Hi ' + inputValue + ' !' + '</h3>');
-  $('.home').append($div);
-}
 
 //Button click event listeners
 $('#play').on('click', function() {
@@ -106,35 +112,41 @@ function incrementAge() {
 
 //Timer
 const setTimer = (healthBar) => {
+
   const timer = setInterval(() => {
 
     if ($('#hunger').val() === 0 || $('#mood').val() === 0 || $('#sleep').val() === 0) {
       alert('GAME OVER')
-      clearInterval(timer);
+      invalidateTimerArray()
     }
 
     decrementHealthBar(healthBar)
     checkMinAndMax(healthBar);
-}, timerInterval)
+  }, timerInterval)
+
+  timerArray.push(timer)
 }
 
 //Age Timer
 const ageTimer = (healthBar) => {
+
   const timer = setInterval(() => {
-  child()
-  adult()
-  elder()
-  time++;
+    child()
+    adult()
+    elder()
+    time++;
 
-  incrementAge(healthBar)
+    incrementAge(healthBar)
 
-  if (time === 40) {
+    if (time === 40) {
       clearInterval(timer);
       console.log('game over');
-      alert('GAME OVER')
+      alert('CONGRATS! You lived a fullfilling life.')
+      invalidateTimerArray()
     }
-  }, 1000)
+  }, 4000)
 
+  timerArray.push(timer)
 }
 
 
@@ -146,6 +158,11 @@ function startTamagotchi() {
 }
 
 
+function invalidateTimerArray() {
+  for (let timer of timerArray) {
+    clearInterval(timer)
+  }
+}
 
 
 function checkGameOver() {
@@ -158,7 +175,12 @@ function child() {
   if ($('#age').val() === 10) {
     console.log('hello');
     $('.pet').velocity('transition.bounceDownIn');
-    $('.pet').css({'width': '300px', 'height': '250px', 'left': '50%', 'top': '60%'})
+    $('.pet').css({
+      'width': '300px',
+      'height': '250px',
+      'left': '50%',
+      'top': '60%'
+    })
   }
 }
 
@@ -166,9 +188,18 @@ function adult() {
   if ($('#age').val() === 20) {
     console.log('hello');
     $('.pet').velocity('transition.bounceDownIn');
-    $('.head').css({'background': 'blue'});
-    $('.body').css({'background': 'blue'});
-    $('.pet').css({'width': '350px', 'height': '300px', 'left': '40%', 'top': '45%'})
+    $('.head').css({
+      'background': 'blue'
+    });
+    $('.body').css({
+      'background': 'blue'
+    });
+    $('.pet').css({
+      'width': '350px',
+      'height': '300px',
+      'left': '40%',
+      'top': '45%'
+    })
   }
 }
 
@@ -176,21 +207,29 @@ function elder() {
   if ($('#age').val() === 30) {
     console.log('hello');
     $('.pet').velocity('transition.bounceDownIn');
-    $('.pet').css({'width': '280px', 'height': '240px', 'left': '50%', 'top': '60%'})
-    $('.head').css({'background': 'gray'});
-    $('.body').css({'background': 'gray'});
-    $('.eyes span').css({'width': '10%', 'height': '10%'});
+    $('.pet').css({
+      'width': '280px',
+      'height': '240px',
+      'left': '50%',
+      'top': '60%'
+    })
+    $('.head').css({
+      'background': 'gray'
+    });
+    $('.body').css({
+      'background': 'gray'
+    });
+    $('.eyes span').css({
+      'width': '10%',
+      'height': '10%'
+    });
   }
 }
 
-/* width: 300px;
-height: 250px; */
-/* left: 50%;
-top: 60%; */
 
 // ===================================
 // Start Program
 // ===================================
 
 
-startTamagotchi()
+//startTamagotchi()

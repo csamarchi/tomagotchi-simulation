@@ -7,11 +7,28 @@ body {
   margin: 0px;
 }
 
+.intro {
+  position: relative;
+  top: -20px;
+  left: -50px;
+  overflow-wrap: break-word;
+}
+
+.directions {
+  font-size: 1em;
+}
+
 #name {
   position: relative;
   text-align: left;
   top: 20px;
-  left: 10px;
+  left: -30px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+p, h1 {
+  font-size: 2em;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 .wrap {
@@ -29,15 +46,20 @@ body {
   min-width: 300px;
   width: 25%;
   height: 35%;
-  background-color: #FFB6C1;
+  background-color: #ffccfe;
+  background-image:
+  radial-gradient(salmon 20%, transparent 0),
+  radial-gradient(salmon 20%, transparent 0);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
   border-radius: 10px;
   position: absolute;
-  left: 300px;
-  top: 200px;
+  left: 320px;
+  top: 180px;
   margin-left: -35%;
   margin-top: -10%;
   -webkit-box-shadow: inset 5px 5px 5px 0 #333333, inset -3px -3px 0 0 #999999;
@@ -49,7 +71,7 @@ body {
 .home:after {
   content: "";
   display: block;
-  background: white;
+  background: salmon;
   width: 160%;
   height: 150%;
   position: relative;
@@ -198,10 +220,6 @@ body {
   margin-top: 7px;
 }
 
-p, h1 {
-  font-size: 2em;
-  font-family: "Comic Sans MS", cursive, sans-serif;
-}
 
 .greeting {
   text-align: center;
@@ -223,13 +241,13 @@ p, h1 {
   font-size: 10px;
   position: relative;
   left: 550px;
-  bottom: 300px;
+  bottom: 200px;
 }
 
 .configurations {
   position: relative;
   left: 0px;
-  top: 0px;
+  top: -50px;
   padding-bottom: 70px;
   padding-top: 0;
 }
