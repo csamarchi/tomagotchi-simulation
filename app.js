@@ -14,7 +14,6 @@ let timerInterval = 5000
 let timerArray = []
 
 
-
 //Name Functions
 $('#nameButton').on('click', () => {
   const $name = $('input').val();
@@ -41,35 +40,13 @@ function checkMinAndMax(healthBar) {
   }
 }
 
-//Created Game Over Functions
-function checkHunger(healthBar) {
-  if ($('#hunger').val() === 0) {
-    console.log('hunger game over');
-    alert('GAME OVER')
-  }
-}
-
-function checkEnergy(healthBar) {
-  if ($('#sleep').val() === 0) {
-    console.log('energy game over');
-    alert('GAME OVER')
-  }
-}
-
-function checkMood(healthBar) {
-  if ($('#mood').val() === 0) {
-    //console.log('your pet killed himself');
-    alert('GAME OVER')
-  }
-}
-
 
 //Button click event listeners
 $('#play').on('click', function() {
   incrementHealthBar($('#mood'))
   checkMinAndMax($('#mood'))
   $('.pet').velocity('transition.bounceUpIn');
-  $('.pet').velocity('transition.bounceDownIn');
+  $('.pet').velocity('transition.bounceDownIn', 3000);
 })
 
 $('#feed').on('click', function() {
@@ -89,7 +66,6 @@ $('#lights').on('click', function() {
 //Animations
 $('.pet').velocity('transition.bounce', 200);
 $('.pet').velocity('transition.bounceUpIn');
-//$('.eyes').velocity('transition.shrinkOut');
 
 
 //Utility Functions
@@ -145,7 +121,7 @@ const ageTimer = (healthBar) => {
       alert('CONGRATS! You lived a fullfilling life.')
       invalidateTimerArray()
     }
-  }, 4000)
+  }, 1000)
 
   timerArray.push(timer)
 }
@@ -166,12 +142,7 @@ function invalidateTimerArray() {
 }
 
 
-function checkGameOver() {
-  checkHunger();
-  checkMood();
-  checkEnergy();
-}
-
+//Life Stages Functions
 function child() {
   if ($('#age').val() === 10) {
     console.log('hello');
