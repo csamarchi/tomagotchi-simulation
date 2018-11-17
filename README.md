@@ -10,8 +10,6 @@ A simulation game based off of the childhood toy Tamagotchi. Feed, play, and car
 
 ![alt text](first.png)
 
-![alt text](second.png)
-
 ![alt text](gameover.png)
 
 
